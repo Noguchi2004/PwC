@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\pedro\\Source\\Repos\\Noguchi2004\\PwC\\DesafioPwC\\DesafioPwC.csproj": {}
+    "C:\\Users\\pedro\\source\\repos\\Noguchi2004\\PwC\\DesafioPwC\\DesafioPwC.csproj": {}
   },
   "projects": {
-    "C:\\Users\\pedro\\Source\\Repos\\Noguchi2004\\PwC\\DesafioPwC\\DesafioPwC.csproj": {
+    "C:\\Users\\pedro\\source\\repos\\Noguchi2004\\PwC\\DesafioPwC\\DesafioPwC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pedro\\Source\\Repos\\Noguchi2004\\PwC\\DesafioPwC\\DesafioPwC.csproj",
+        "projectUniqueName": "C:\\Users\\pedro\\source\\repos\\Noguchi2004\\PwC\\DesafioPwC\\DesafioPwC.csproj",
         "projectName": "DesafioPwC",
-        "projectPath": "C:\\Users\\pedro\\Source\\Repos\\Noguchi2004\\PwC\\DesafioPwC\\DesafioPwC.csproj",
+        "projectPath": "C:\\Users\\pedro\\source\\repos\\Noguchi2004\\PwC\\DesafioPwC\\DesafioPwC.csproj",
         "packagesPath": "C:\\Users\\pedro\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pedro\\Source\\Repos\\Noguchi2004\\PwC\\DesafioPwC\\obj\\",
+        "outputPath": "C:\\Users\\pedro\\source\\repos\\Noguchi2004\\PwC\\DesafioPwC\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
