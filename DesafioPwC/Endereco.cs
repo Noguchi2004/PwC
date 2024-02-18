@@ -34,7 +34,9 @@ public class Endereco
 		else {
 			for (int i = stringDividida.Count - 1; i >= 0; i--)
 			{
-				Numero = stringDividida[]
+				Numero = stringDividida[];
+				stringDividida.RemoveAt(stringDividida - i--);
+				Rua = string.Join(" ", stringDividida);
 	
 			}
 		}
