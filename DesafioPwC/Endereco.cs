@@ -15,7 +15,7 @@ public class Endereco
 		String Rua = String.Empty;
 		int numTeste;
 
-		List<String> stringDividida = endereco.Split(" ", StringSplitOptions.None).ToList();
+		List<String> stringDividida = endereco.Replace(",","").Split(" ", StringSplitOptions.None).ToList();
 
 		if (int.TryParse(stringDividida[0], out numTeste))
 		{
@@ -31,16 +31,38 @@ public class Endereco
 			stringDividida.RemoveAt(stringDividida.Count - 1);
 			Rua = string.Join(" ", stringDividida);
 		}
-		else {
-			for (int i = stringDividida.Count - 1; i >= 0; i--)
+		else
+		{
+			var n = -1;
+			for (int i = 0; i < stringDividida.Count; i++) 
 			{
-				Numero = stringDividida[];
-				stringDividida.RemoveAt(stringDividida - i--);
-				Rua = string.Join(" ", stringDividida);
-	
+				if (Regex.IsMatch(stringDividida[i], "^\\d"))
+				{
+					n = i;
+				}
 			}
+
+			for (int i = 0; i <n; i++)
+			{
+				Rua += stringDividida[i];
+				if (i+1 < n)
+				{
+					Rua += " ";
+                } 
+			}
+
+
+			for (int i = n; i < stringDividida.Count; i++)
+			{
+				//Numero+= stringDividida[i];
+                Numero = Numero + stringDividida[i];
+                if (i + 1 < n)
+                {
+                    Numero += " ";
+                }
+            }
 		}
-		return $"{{\"{Rua}\"}},\"{{\"{Numero}\"}}";
+		return $"{{\"{Rua}\",\"{Numero}\"}}";
 
 	}
 
