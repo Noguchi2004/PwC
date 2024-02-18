@@ -93,7 +93,13 @@ public class Endereco
 				Numero = Numero.TrimEnd();
 
 			}
-			return $"{{\"{Rua}\",\"{Numero}\"}}";
+			if (string.IsNullOrEmpty(Rua))
+			{
+                return "Informe a rua no endereço!";
+            }
+
+
+            return $"{{\"{Rua}\",\"{Numero}\"}}";
 		}
 		catch
 		{
