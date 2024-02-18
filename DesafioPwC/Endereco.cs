@@ -11,59 +11,93 @@ public class Endereco
 
 	public String Converte(String endereco)
 	{
-		String Numero = String.Empty;
-		String Rua = String.Empty;
-		int numTeste;
-
-		List<String> stringDividida = endereco.Replace(",","").Split(" ", StringSplitOptions.None).ToList();
-
-		if (int.TryParse(stringDividida[0], out numTeste))
+		try
 		{
-			Numero = stringDividida[0];
-			stringDividida.RemoveAt(0);
-			Rua = String.Join(" ", stringDividida);
+			String Numero = String.Empty;
+			String Rua = String.Empty;
+			int numTeste;
+
+			List<String> stringDividida = endereco.Replace(",", "").Split(" ", StringSplitOptions.None).ToList();
 
 
-		}
-		else if (Regex.IsMatch(stringDividida[stringDividida.Count - 1], @"\d$"))
-		{
-			Numero = stringDividida[stringDividida.Count - 1];
-			stringDividida.RemoveAt(stringDividida.Count - 1);
-			Rua = string.Join(" ", stringDividida);
-		}
-		else
-		{
-			var n = -1;
-			for (int i = 0; i < stringDividida.Count; i++) 
+			//se o numero estiver no inicio
+			if (int.TryParse(stringDividida[0], out numTeste))
 			{
-				if (Regex.IsMatch(stringDividida[i], "^\\d"))
+				Numero = stringDividida[0];
+				stringDividida.RemoveAt(0);
+				Rua = String.Join(" ", stringDividida);
+
+
+			}
+			else if (stringDividida.Contains("No"))
+			{
+				var n = -1;
+				for (int i = 0; i < stringDividida.Count; i++)
 				{
-					n = i;
+					if (stringDividida[i] == "No")
+					{
+						n = i;
+					}
 				}
-			}
 
-			for (int i = 0; i <n; i++)
-			{
-				Rua += stringDividida[i];
-				if (i+1 < n)
+				for (int i = 0; i < n; i++)
 				{
-					Rua += " ";
-                } 
+					Rua += stringDividida[i];
+					if (i + 1 < n)
+					{
+						Rua += " ";
+					}
+				}
+
+
+				for (int i = n; i < stringDividida.Count; i++)
+				{
+					Numero += stringDividida[i] + " ";
+				}
+
+				Numero = Numero.TrimEnd();
+
 			}
-
-
-			for (int i = n; i < stringDividida.Count; i++)
+			//se estiver no final
+			else if (Regex.IsMatch(stringDividida[stringDividida.Count - 1], @"\d$"))
 			{
-				//Numero+= stringDividida[i];
-                Numero = Numero + stringDividida[i];
-                if (i + 1 < n)
-                {
-                    Numero += " ";
-                }
-            }
+				Numero = stringDividida[stringDividida.Count - 1];
+				stringDividida.RemoveAt(stringDividida.Count - 1);
+				Rua = string.Join(" ", stringDividida);
+			}
+			else
+			{
+				var n = -1;
+				for (int i = 0; i < stringDividida.Count; i++)
+				{
+					if (Regex.IsMatch(stringDividida[i], "^\\d"))
+					{
+						n = i;
+					}
+				}
+
+				for (int i = 0; i < n; i++)
+				{
+					Rua += stringDividida[i];
+					if (i + 1 < n)
+					{
+						Rua += " ";
+					}
+				}
+
+
+				for (int i = n; i < stringDividida.Count; i++)
+				{
+					Numero += stringDividida[i] + " ";
+				}
+				Numero = Numero.TrimEnd();
+
+			}
+			return $"{{\"{Rua}\",\"{Numero}\"}}";
 		}
-		return $"{{\"{Rua}\",\"{Numero}\"}}";
-
+		catch
+		{
+			return "Informe um endereço correto, contendo rua e número, em qualquer ordem!";
+		}
 	}
-
 }
